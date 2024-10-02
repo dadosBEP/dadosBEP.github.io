@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Calculadora de Vendas</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="container">
+        <h1>Calculadora de Vendas</h1>
+
+        <!-- Quadro de Resumo movido para cima -->
+        <div class="resumo">
+            <h3>Legenda</h3>
+            <!-- Quadrante Prod -->
+            <div class="quadrante">
+                <h4>Vendas</h4>
+                <p>Abaixo de 9: R$ 0</p>
+                <p>De 10 a 12: R$ 120</p>
+                <p>De 13 a 15: R$ 320</p>
+                <p>De 16 a 20: R$ 450</p>
+                <p>21+: R$ 25 por venda adicional</p>
+            </div>
+            <!-- Quadrante TPV -->
+            <div class="quadrante">
+                <h4>TPV (Premiação)</h4>
+                <p> 0-4K: 	R$ 0</p>
+                <p> 4K-6K: 	R$ 50</p>
+                <p> 6K-11K: 	R$ 85</p>
+                <p> 11K-15K: 	R$ 135</p>
+                <p> 15K-20K: 	R$ 160</p>
+                <p> 20K+: 	R$ 200</p>
+            </div>
+        </div>
+
+        <!-- Informações de salário fixo e ajuda de custo -->
+        <div class="info">
+            <p><strong>Salário Fixo:</strong> R$ 1602.79</p>
+            <p><strong>Ajuda de Custo:</strong> R$ 850.00</p>
+        </div>
+
+        <form id="sales-form">
+            <label for="sales">Quantidade de Vendas:</label>
+            <input type="number" id="sales" name="sales" min="0" required>
+            
+            <h2>TPV M1 (Premiação)</h2>
+            <div class="tpv-fields">
+                <div class="left-fields">
+                    <label for="campo1">0-4K:</label>
+                    <input type="number" id="campo1" name="campo1" min="0">
+
+                    <label for="campo3">6K-11K:</label>
+                    <input type="number" id="campo3" name="campo3" min="0">
+
+                    <label for="campo5">15K-20K:</label>
+                    <input type="number" id="campo5" name="campo5" min="0">
+                </div>
+
+                <div class="right-fields">
+                    <label for="campo2">4K-6K:</label>
+                    <input type="number" id="campo2" name="campo2" min="0">
+
+                    <label for="campo4">11K-15K:</label>
+                    <input type="number" id="campo4" name="campo4" min="0">
+
+                    <label for="campo6">20K+:</label>
+                    <input type="number" id="campo6" name="campo6" min="0">
+                </div>
+            </div>
+
+            <button type="submit">Calcular</button>
+        </form>
+
+        <div id="result"></div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
