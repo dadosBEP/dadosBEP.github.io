@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Calculadora de RV</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="container">
+        <h2>Calculadora de RV</h2>
+	<h2>Comissão</h2>
+        <label for="prod">Prod :</label>
+        <input type="number" id="prod" min="0">
+
+        <label for="clientes">Quantidade de vendas:</label>
+        <input type="number" id="clientes" min="0">
+
+        <label for="visitas">Média de visitas:</label>
+        <input type="number" id="visitas" min="0">
+	<h2>Premiação</h2>
+        <label for="m1_medio">TPV M1 Médio:</label>
+        <input type="number" id="m1_medio" min="0">
+
+        <label for="clientes_m1">Quantidade de clientes no M1:</label>
+        <input type="number" id="clientes_m1" min="0">
+
+        <label for="m2_medio">TPV M2 Médio:</label>
+        <input type="number" id="m2_medio" min="0">
+
+        <label for="clientes_m2">Quantidade de clientes no M2:</label>
+        <input type="number" id="clientes_m2" min="0">
+        <button onclick="calcularRV()">Calcular</button>
+
+        <p id="resultado"></p>
+    </div>
+     		
+    <script src="script.js"></script>
+</body>
+</html>
