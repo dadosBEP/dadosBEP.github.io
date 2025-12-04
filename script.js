@@ -93,8 +93,8 @@ function calcularRV() {
 	let valorPremiacao = valorsemana1 + valorsemana2 + valorsemana3 + valorsemana4 + valorsemana5;
 	
     // Salário fixo e ajuda de custo
-    const salarioFixo = 1686.14;
-    const ajudaCusto = 850.00;
+    const salarioFixo = 1851.77;
+    const ajudaCusto = 900.00;
 
 	//Escolher a base de cálculo
 	if (qtdVendas >= 8 & qtdVendas <10){
@@ -134,6 +134,7 @@ function calcularRV() {
         <p><strong>Total Final:</strong> <span>R$ ${totalRV.toFixed(2)}</span></p>
     `;
 }
+
 
 
 
