@@ -101,11 +101,11 @@ function calcularRV() {
 		mult25k = 0;
 	} else {
 		if (migracao < 25) {
-			if (qtdVendas >= 8 && qtdVendas <10){
+			if (qtdVendas >= 8 & qtdVendas <10){
 				mult15k = 10;
 				mult20k = 20;
 				mult25k = 40;
-			} else if (qtdVendas >= 10 && qtdVendas <12){
+			} else if (qtdVendas >= 10 & qtdVendas <12){
 				mult15k = 30;
 				mult20k = 60;
 				mult25k = 120;
@@ -115,11 +115,11 @@ function calcularRV() {
 				mult25k = 160;
 			}	
 		} else {
-			if (qtdVendas >= 8 && qtdVendas <10){
+			if (qtdVendas >= 8 & qtdVendas <10){
 				mult15k = 30;
 				mult20k = 50;
 				mult25k = 80;
-			} else if (qtdVendas >= 10 && qtdVendas <12){
+			} else if (qtdVendas >= 10 & qtdVendas <12){
 				mult15k = 60;
 				mult20k = 120;
 				mult25k = 250;
@@ -134,13 +134,13 @@ function calcularRV() {
 	// Valor desempenho
 	if (desempenho < 85) {
 		ds = 0;
-	} else if (desempenho >= 85 && desempenho < 90) {
+	} else if (desempenho >= 85 & desempenho < 90) {
 		ds = 0.05;
-	} else if (desempenho >= 90 && desempenho < 100) {
+	} else if (desempenho >= 90 & desempenho < 100) {
 		ds = 0.075;
-	} else if (desempenho >= 100 && desempenho < 120) {
+	} else if (desempenho >= 100 & desempenho < 120) {
 		ds = 0.1;
-	} else if (desempenho >= 120 && desempenho < 150) {
+	} else if (desempenho >= 120 & desempenho < 150) {
 		ds = 0.2;
 	} else if (desempenho >= 150) {
 		ds = 0.5;
@@ -168,6 +168,7 @@ function calcularRV() {
         <p><strong>Total Final:</strong> <span>R$ ${totalRV.toFixed(2)}</span></p>
     `;
 }
+
 
 
 
