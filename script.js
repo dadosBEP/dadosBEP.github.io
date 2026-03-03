@@ -129,6 +129,7 @@ function calcularRV() {
 				mult25k = 300;
 			}
 		}
+	}
 
 	// Valor desempenho
 	if (desempenho < 85) {
@@ -167,6 +168,7 @@ function calcularRV() {
         <p><strong>Total Final:</strong> <span>R$ ${totalRV.toFixed(2)}</span></p>
     `;
 }
+
 
 
 
