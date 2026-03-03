@@ -99,7 +99,7 @@ function calcularRV() {
 		mult15k = 0;
 		mult20k = 0;
 		mult25k = 0;
-	} else
+	} else {
 		if (migracao < 25) {
 			if (qtdVendas >= 8 & qtdVendas <10){
 				mult15k = 10;
@@ -114,7 +114,7 @@ function calcularRV() {
 				mult20k = 100;
 				mult25k = 160;
 			}	
-		} else 
+		} else {
 			if (qtdVendas >= 8 & qtdVendas <10){
 				mult15k = 30;
 				mult20k = 50;
@@ -167,5 +167,6 @@ function calcularRV() {
         <p><strong>Total Final:</strong> <span>R$ ${totalRV.toFixed(2)}</span></p>
     `;
 }
+
 
 
