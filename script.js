@@ -20,7 +20,7 @@ function calcularRV() {
 	let mult15k = 0;
 	let mult20k = 0;
 	let mult25k = 0;
-	let desem = 0;
+	let ds = 0;
 	
 	// Definição do valor Semana1
 	if (semana1 < 2) {
@@ -133,22 +133,22 @@ function calcularRV() {
 
 	// Valor desempenho
 	if (desempenho < 85) {
-		desem = 0;
+		ds = 0;
 	} else if (desempenho >= 85 && desempenho < 90) {
-		desem = 0.05;
+		ds = 0.05;
 	} else if (desempenho >= 90 && desempenho < 100) {
-		desem = 0.075;
+		ds = 0.075;
 	} else if (desempenho >= 100 && desempenho < 120) {
-		desem = 0.1;
+		ds = 0.1;
 	} else if (desempenho >= 120 && desempenho < 150) {
-		desem = 0.2;
+		ds = 0.2;
 	} else if (desempenho >= 150) {
-		desem = 0.5;
+		ds = 0.5;
 	}
 
 	// Valor de comissão
 	let valorComissao = qtd15k*mult15k + qtd20k*mult20k + qtd25k*mult25k;
-	let valorFinal = valorComissao * (1+desem);
+	let valorFinal = valorComissao * (1+ds);
 	
     // Soma final
     let totalRV = salarioFixo + ajudaCusto + valorPremiacao + valorFinal;
@@ -168,6 +168,7 @@ function calcularRV() {
         <p><strong>Total Final:</strong> <span>R$ ${totalRV.toFixed(2)}</span></p>
     `;
 }
+
 
 
 
