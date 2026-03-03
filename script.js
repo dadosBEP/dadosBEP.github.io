@@ -96,7 +96,9 @@ function calcularRV() {
 
 	//Escolher a base de cálculo
 	if (m1Medio < 10000) {
-		0
+		mult15k = 0;
+		mult20k = 0;
+		mult25k = 0;
 	} else
 		if (migracao < 25) {
 			if (qtdVendas >= 8 & qtdVendas <10){
@@ -165,4 +167,5 @@ function calcularRV() {
         <p><strong>Total Final:</strong> <span>R$ ${totalRV.toFixed(2)}</span></p>
     `;
 }
+
 
