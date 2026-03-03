@@ -4,7 +4,10 @@ function calcularRV() {
 	let semana3 = parseInt(document.getElementById("semana3").value) || 0;
 	let semana4 = parseInt(document.getElementById("semana4").value) || 0;
 	let semana5 = parseInt(document.getElementById("semana5").value) || 0;
+	let m1Medio = parseFloat(document.getElementById("m1Medio").value) || 0;
 	let qtdVendas = parseInt(document.getElementById("qtdVendas").value) || 0;
+	let migracao = parseFloat(document.getElementById("migracao").value) || 0;
+	let desempenho = parseFloat(document.getElementById("desempenho").value) || 0;
 	let qtd15k = parseInt(document.getElementById("qtd15k").value) || 0;
 	let qtd20k = parseInt(document.getElementById("qtd20k").value) || 0;
 	let qtd25k = parseInt(document.getElementById("qtd25k").value) || 0;
@@ -17,7 +20,7 @@ function calcularRV() {
 	let mult15k = 0;
 	let mult20k = 0;
 	let mult25k = 0;
-
+	let desem = 0;
 	
 	// Definição do valor Semana1
 	if (semana1 < 2) {
@@ -31,7 +34,6 @@ function calcularRV() {
 	} else if (semana1 >= 7) {
 		valorsemana1 = 700;
 	}
-
 	
 	// Definição do valor semana2
 	if (semana2 < 2) {
@@ -46,8 +48,6 @@ function calcularRV() {
 		valorsemana2 = 700;
 	}
 
-
-
 	// Definição do valor semana3
 	if (semana3 < 2) {
 		valorsemana3 = 0;
@@ -60,9 +60,8 @@ function calcularRV() {
 	} else if (semana3 >= 7) {
 		valorsemana3 = 700;
 	}
-
-
-		  // Definição do valor semana4
+	
+	// Definição do valor semana4
 	if (semana4 < 2) {
 		valorsemana4 = 0;
 	} else if (semana4 >= 2 & semana4 < 3) {
@@ -74,7 +73,6 @@ function calcularRV() {
 	} else if (semana4 >= 7) {
 		valorsemana4 = 700;
 	}
-
 
 	// Definição do valor semana5
 	if (semana5 < 2) {
@@ -97,27 +95,60 @@ function calcularRV() {
     const ajudaCusto = 900.00;
 
 	//Escolher a base de cálculo
-	if (qtdVendas >= 8 & qtdVendas <10){
-		mult15k = 20;
-		mult20k = 35;
-		mult25k = 60;
-	} else if (qtdVendas >= 10 & qtdVendas <12){
-		mult15k = 50;
-		mult20k = 100;
-		mult25k = 200;
-	} else if (qtdVendas >= 12){
-		mult15k = 60;
-		mult20k = 130;
-		mult25k = 250;
-	}
+	if (m1Medio < 10000) {
+		0
+	} else
+		if (migracao < 25) {
+			if (qtdVendas >= 8 & qtdVendas <10){
+				mult15k = 10;
+				mult20k = 20;
+				mult25k = 40;
+			} else if (qtdVendas >= 10 & qtdVendas <12){
+				mult15k = 30;
+				mult20k = 60;
+				mult25k = 120;
+			} else if (qtdVendas >= 12){
+				mult15k = 50;
+				mult20k = 100;
+				mult25k = 160;
+			}	
+		} else 
+			if (qtdVendas >= 8 & qtdVendas <10){
+				mult15k = 30;
+				mult20k = 50;
+				mult25k = 80;
+			} else if (qtdVendas >= 10 & qtdVendas <12){
+				mult15k = 60;
+				mult20k = 120;
+				mult25k = 250;
+			} else if (qtdVendas >= 12){
+				mult15k = 80;
+				mult20k = 160;
+				mult25k = 300;
+			}
+		}
 
+	// Valor desempenho
+	if (desempenho < 85) {
+		desem = 0;
+	} else if (desempenho >= 85 & desempenho < 90) {
+		desem = 0.05;
+	} else if (desempenho >= 90 & desempenho < 100) {
+		desem = 0.075;
+	} else if (desempenho >= 100 & desempenho < 120) {
+		desem = 0.1;
+	} else if (desempenho >= 120 & desempenho < 150) {
+		desem = 0.2;
+	} else if (desempenho >= 150) {
+		desem = 0.5;
+	}
 
 	// Valor de comissão
 	let valorComissao = qtd15k*mult15k + qtd20k*mult20k + qtd25k*mult25k;
-
+	let valorFinal = valorComissao * (1+desem);
 	
     // Soma final
-    let totalRV = salarioFixo + ajudaCusto + valorPremiacao + valorComissao;
+    let totalRV = salarioFixo + ajudaCusto + valorPremiacao + valorFinal;
 
     // Exibição dos resultados separados
     document.getElementById("resultado").innerHTML = `
@@ -130,7 +161,8 @@ function calcularRV() {
 		<p><strong>Semana 4:</strong> <span>R$ ${valorsemana4.toFixed(2)}</span></p>
 		<p><strong>Semana 5:</strong> <span>R$ ${valorsemana5.toFixed(2)}</span></p>
         <p><strong>Valor Premiação:</strong> <span>R$ ${valorPremiacao.toFixed(2)}</span></p>
-		<p><strong>Valor Comissão:</strong> <span>R$ ${valorComissao.toFixed(2)}</span></p>
+		<p><strong>Valor Comissão:</strong> <span>R$ ${valorFinal.toFixed(2)}</span></p>
         <p><strong>Total Final:</strong> <span>R$ ${totalRV.toFixed(2)}</span></p>
     `;
 }
+
