@@ -102,17 +102,17 @@ function calcularRV() {
 	} else {
 		if (migracao < 50) {
 			if (qtdVendas >= 8 & qtdVendas <10){
-				mult15k = 10;
-				mult20k = 20;
-				mult25k = 40;
+				mult15k = 5;
+				mult20k = 10;
+				mult25k = 20;
 			} else if (qtdVendas >= 10 & qtdVendas <12){
-				mult15k = 30;
-				mult20k = 60;
-				mult25k = 120;
+				mult15k = 15;
+				mult20k = 30;
+				mult25k = 60;
 			} else if (qtdVendas >= 12){
-				mult15k = 50;
-				mult20k = 100;
-				mult25k = 160;
+				mult15k = 25;
+				mult20k = 50;
+				mult25k = 80;
 			}	
 		} else {
 			if (qtdVendas >= 8 & qtdVendas <10){
