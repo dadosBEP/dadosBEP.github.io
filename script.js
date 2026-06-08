@@ -100,7 +100,7 @@ function calcularRV() {
 		mult20k = 0;
 		mult25k = 0;
 	} else {
-		if (migracao < 50) {
+		if (migracao < 60) {
 			if (qtdVendas >= 8 & qtdVendas <10){
 				mult15k = 5;
 				mult20k = 10;
