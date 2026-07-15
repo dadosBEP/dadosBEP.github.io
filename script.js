@@ -105,15 +105,25 @@ function calcularRV() {
     const ajudaCusto = 900.00;
 
 	//Escolher a base de cálculo
-	if (m1Medio < 10000) {
+	if (m1Medio < 15000) {
 		mult15k = 0;
 		mult20k = 0;
 		mult25k = 0;
 	} else {
-		if (migracao < 50) {
-			mult15k = 0;
-			mult20k = 0;
-			mult25k = 0;
+		if (migracao < 60) {
+			if (qtdVendas >= 8 & qtdVendas <10){
+				mult15k = 5;
+				mult20k = 10;
+				mult25k = 20;
+			} else if (qtdVendas >= 10 & qtdVendas <12){
+				mult15k = 15;
+				mult20k = 30;
+				mult25k = 60;
+			} else if (qtdVendas >= 12){
+				mult15k = 25;
+				mult20k = 50;
+				mult25k = 80;
+			}
 		} else {
 			if (qtdVendas >= 8 & qtdVendas <10){
 				mult15k = 30;
