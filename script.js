@@ -3,7 +3,7 @@ function calcularDesempenho() {
 	let qtdVendas = parseInt(document.getElementById("qtdVendas").value) || 0;
 	let migracao = parseFloat(document.getElementById("migracao").value) || 0;
 
-	let desempenho = (qtdVendas / 12) * 0.1 + (m1Medio / 15000) * 0.4 + (migracao / 50) * 0.5;
+	let desempenho = (qtdVendas / 12) * 0.1 + (m1Medio / 15000) * 0.4 + (migracao / 60) * 0.5;
 	desempenho *= 100;
 	document.getElementById("desempenho").value = desempenho.toFixed(2);
 }
