@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Calculadora de RV</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="container">
+        <h2>Calculadora de RV</h2>
+	<h2>Premiação</h2>
+
+		<label for="semana1">Semana 1:</label>
+        <input type="number" id="semana1" min="0">
+
+		<label for="semana2">Semana 2:</label>
+        <input type="number" id="semana2" min="0">
+
+		<label for="semana3">Semana 3:</label>
+        <input type="number" id="semana3" min="0">
+
+		<label for="semana4">Semana 4:</label>
+        <input type="number" id="semana4" min="0">
+
+		<label for="semana5">Semana 5:</label>
+        <input type="number" id="semana5" min="0">
+		
+	<h2>Comissão</h2>
+
+		<label for="m1Medio">M1 Médio:</label>
+       	<input type="number" id="m1Medio" min="0" oninput="calcularDesempenho()">
+		
+		<label for="qtdVendas">Qtd Vendas:</label>
+       	<input type="number" id="qtdVendas" min="0" oninput="calcularDesempenho()">
+
+		<label for="migracao">Migração (%):</label>
+       	<input type="number" id="migracao" min="0" oninput="calcularDesempenho()">
+
+		<label for="desempenho">Desempenho (%):</label>
+       	<input type="number" id="desempenho" min="0" step="0.01" placeholder="Calculado automaticamente">
+		
+		<label for="qtd15k">Qtd Clientes 15k:</label>
+       	<input type="number" id="qtd15k" min="0">
+		
+		<label for="qtd20k">Qtd Clientes 20k:</label>
+       	<input type="number" id="qtd20k" min="0">
+		
+		<label for="qtd25k">Qtd Clientes 25k:</label>
+       	<input type="number" id="qtd25k" min="0">
+
+	<h2>Premiação Trimestral</h2>
+
+		<label for="qtdClientesTrim">Qtd de Clientes:</label>
+       	<input type="number" id="qtdClientesTrim" min="0" oninput="calcularPremiacaoTrimestral()">
+
+		<label for="somaM1">Soma de M1:</label>
+       	<input type="number" id="somaM1" min="0" step="0.01" oninput="calcularPremiacaoTrimestral()">
+
+		<label for="somaM2">Soma de M2:</label>
+       	<input type="number" id="somaM2" min="0" step="0.01" oninput="calcularPremiacaoTrimestral()">
+
+		<label for="somaM3">Soma de M3:</label>
+       	<input type="number" id="somaM3" min="0" step="0.01" oninput="calcularPremiacaoTrimestral()">
+
+		<label for="tpvMedioTrim">TPV Médio:</label>
+       	<input type="text" id="tpvMedioTrim" readonly placeholder="Calculado automaticamente">
+
+		<label for="rebaitTrim">Rebait:</label>
+       	<input type="text" id="rebaitTrim" readonly placeholder="Calculado automaticamente">
+
+		<button onclick="calcularRV()">Calcular</button>
+
+        <p id="resultado"></p>
+
+        <details class="legenda">
+            <summary>Ver regras de cálculo</summary>
+
+            <h4>Premiação (por semana)</h4>
+            <table class="tabela-regras">
+                <thead>
+                    <tr><th>Vendas</th><th>Qtd Vendas</th><th>Valor</th></tr>
+                </thead>
+                <tbody>
+                    <tr><td>—</td><td>0</td><td>R$ 0</td></tr>
+                    <tr><td>02 vendas</td><td>2</td><td>R$ 100</td></tr>
+                    <tr><td>03 vendas</td><td>3 a 4</td><td>R$ 450</td></tr>
+                    <tr><td>05 vendas</td><td>5 a 6</td><td>R$ 550</td></tr>
+                    <tr><td>07 vendas</td><td>7+</td><td>R$ 700</td></tr>
+                </tbody>
+            </table>
+
+            <h4>Comissão &mdash; TPV por Cliente</h4>
+            <table class="tabela-regras">
+                <thead>
+                    <tr><th>Qtd Vendas (mês corrente)</th><th>15K</th><th>20K</th><th>25K</th></tr>
+                </thead>
+                <tbody>
+                    <tr><td>0</td><td>R$ 0,00</td><td>R$ 0,00</td><td>R$ 0,00</td></tr>
+                    <tr><td>8</td><td>R$ 30,00</td><td>R$ 50,00</td><td>R$ 80,00</td></tr>
+                    <tr><td>10</td><td>R$ 60,00</td><td>R$ 120,00</td><td>R$ 250,00</td></tr>
+                    <tr><td>12</td><td>R$ 80,00</td><td>R$ 160,00</td><td>R$ 300,00</td></tr>
+                </tbody>
+            </table>
+            <p class="obs-legenda">*Valores válidos para M1 Médio ≥ 15.000, Qtd Vendas ≥ 8 e Migração ≥ 60%.</p>
+
+            <h4>Premiação Trimestral (por TPV Médio)</h4>
+            <table class="tabela-regras">
+                <thead>
+                    <tr><th>Faixa</th><th>Rebait</th></tr>
+                </thead>
+                <tbody>
+                    <tr><td>R$ 0,00</td><td>0,00%</td></tr>
+                    <tr><td>R$ 10.000,00</td><td>0,05%</td></tr>
+                    <tr><td>R$ 15.000,00</td><td>0,075%</td></tr>
+                    <tr><td>R$ 20.000,00</td><td>0,15%</td></tr>
+                    <tr><td>R$ 25.000,00</td><td>0,20%</td></tr>
+                </tbody>
+            </table>
+            <p class="obs-legenda">*TPV Médio = (Soma M1 + Soma M2 + Soma M3) / (3 × Qtd de Clientes). O Rebait aplicado é o da faixa cujo valor o TPV Médio atinge ou ultrapassa.</p>
+        </details>
+    </div>
+     		
+    <script src="script.js"></script>
+</body>
+</html>
